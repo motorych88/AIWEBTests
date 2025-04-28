@@ -72,4 +72,9 @@ class LoginPagesHelper(BasePage):
         self.attach_screenshot()
         self.find_element(LoginPagesLocators.CANT_LOGIN).click()
 
+    @allure.step('клик на кнопку регистрации')
+    def click_registration(self):
+        self.attach_screenshot()
+        self.find_element(LoginPagesLocators.BUTTON_REGISTRATION).click()
+
 
