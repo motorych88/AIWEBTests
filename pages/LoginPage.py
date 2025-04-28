@@ -19,6 +19,9 @@ class LoginPagesLocators:
     BUTTON_YANDEX = (By.XPATH, '//*[@data-l="t,yandex"]')
 
     CANT_LOGIN = (By.XPATH, '//*[@data-l="t,restore"]')
+    GO_BACK_BUTTON = (By.XPATH,'//*[@data-l="t,cancel"]')
+    SUPPORT_BUTTON = (By.XPATH, '//*[@class="tico"]//*[@class="external-oauth-login_title-tx"]')
+
     BUTTON_REGISTRATION = (By.XPATH, '//*[@class="button-pro __sec mb-3x __wide" and @data-l="t,register"]')
 
     ERROR_TEXT = (By.XPATH, '//*[@class="input-e login_error"]')
@@ -30,6 +33,8 @@ class LoginPagesHelper(BasePage):
         self.check_page()
 
     def check_page(self):
+        with allure.step('Проверка загрузки страницы'):
+            self.attach_screenshot()
         self.find_element(LoginPagesLocators.TAB_QR)
         self.find_element(LoginPagesLocators.TAB_MAIL)
         self.find_element(LoginPagesLocators.LOGIN_FIELD_EMAIL)
@@ -53,9 +58,18 @@ class LoginPagesHelper(BasePage):
         return self.find_element(LoginPagesLocators.ERROR_TEXT).text
 
     @allure.step('ввод текста в поле ввода почты')
-    def text_login(self):
-        self.find_element(LoginPagesLocators.LOGIN_FIELD_EMAIL).send_keys('Михаил')
+    def text_login(self, login):
+        self.find_element(LoginPagesLocators.LOGIN_FIELD_EMAIL).send_keys(login)
+        self.attach_screenshot()
 
     @allure.step('ввод текста в поле ввода пароля')
-    def text_password(self):
-        self.find_element(LoginPagesLocators.LOGIN_FIELD_PASSWORD).send_keys('Задов')
+    def text_password(self, password):
+        self.find_element(LoginPagesLocators.LOGIN_FIELD_PASSWORD).send_keys(password)
+        self.attach_screenshot()
+
+    @allure.step('Переход к восстановлению пароля')
+    def click_recovery(self):
+        self.attach_screenshot()
+        self.find_element(LoginPagesLocators.CANT_LOGIN).click()
+
+
