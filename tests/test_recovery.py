@@ -10,7 +10,7 @@ PASSWORD = 'password'
 
 
 @allure.feature('Тесты восстановления пароля')
-class TestLogin:
+class TestRecovery:
     @allure.title('Переход к восстановлению после неудачной авторизации')
     def test_go_recovery(self, browser):
         BasePage(browser).get_url(BASE_URL)
