@@ -6,6 +6,8 @@ from pages.LoginPage import LoginPagesHelper
 BASE_URL = 'https://ok.ru'
 EMPTY_LOGIN_ERROR = 'Введите логин'
 EMPTY_PASSWORD_ERROR = 'Введите пароль'
+LOGIN = 'login'
+PASSWORD = 'password'
 
 
 @allure.feature('Тесты формы авторизации')
@@ -21,7 +23,7 @@ class TestLogin:
     def test_empty_password(self, browser):
         BasePage(browser).get_url(BASE_URL)
         login_page = LoginPagesHelper(browser)
-        login_page.text_login()
+        login_page.text_login(LOGIN)
         login_page.click_login()
         assert login_page.get_error_text() == EMPTY_PASSWORD_ERROR
 
@@ -29,6 +31,6 @@ class TestLogin:
     def test_empty_login(self, browser):
         BasePage(browser).get_url(BASE_URL)
         login_page = LoginPagesHelper(browser)
-        login_page.text_password()
+        login_page.text_password(PASSWORD)
         login_page.click_login()
         assert login_page.get_error_text() == EMPTY_LOGIN_ERROR

@@ -8,8 +8,8 @@ BASE_URL = 'https://ok.ru'
 
 
 @allure.feature('Тесты формы регистрации')
-class TestLogin:
-    @allure.title('')
+class TestRegistration:
+    @allure.title('Регистрация с рандомной страной')
     def test_registration_random_country(self, browser):
         BasePage(browser).get_url(BASE_URL)
         login_page = LoginPagesHelper(browser)
