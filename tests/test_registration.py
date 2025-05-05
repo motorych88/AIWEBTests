@@ -1,6 +1,6 @@
 import allure
 from core.BaseTests import browser
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from pages.LoginPage import LoginPagesHelper
 from pages.RegistrationPage import RegistrationPagesHelper
 
@@ -11,7 +11,7 @@ BASE_URL = 'https://ok.ru'
 class TestRegistration:
     @allure.title('Регистрация с рандомной страной')
     def test_registration_random_country(self, browser):
-        BasePage(browser).get_url(BASE_URL)
+        BasePageHelper(browser).get_url(BASE_URL)
         login_page = LoginPagesHelper(browser)
         login_page.click_registration()
         registration_page = RegistrationPagesHelper(browser)

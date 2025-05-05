@@ -1,7 +1,7 @@
 import allure
 from selenium.webdriver import ActionChains
 
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from selenium.webdriver.common.by import By
 
 
@@ -24,7 +24,7 @@ class HelpPagesLocators:
     SEARCH_FIELD = (By.XPATH, '//*[@type="search"]')
 
 
-class HelpPagesHelper(BasePage):
+class HelpPagesHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()

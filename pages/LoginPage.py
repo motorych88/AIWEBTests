@@ -1,6 +1,6 @@
 import allure
 
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from selenium.webdriver.common.by import By
 
 
@@ -27,7 +27,7 @@ class LoginPagesLocators:
     ERROR_TEXT = (By.XPATH, '//*[@class="input-e login_error"]')
 
 
-class LoginPagesHelper(BasePage):
+class LoginPagesHelper(BasePageHelper):
     def __init__(self, driver):
         self.driver = driver
         self.check_page()
