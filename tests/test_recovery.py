@@ -1,6 +1,6 @@
 import allure
 from core.BaseTests import browser
-from pages.BasePage import BasePage
+from pages.BasePage import BasePageHelper
 from pages.LoginPage import LoginPagesHelper
 from pages.RecoveryPage import RecoveryPagesHelper
 
@@ -13,7 +13,7 @@ PASSWORD = 'password'
 class TestRecovery:
     @allure.title('Переход к восстановлению после неудачной авторизации')
     def test_go_recovery(self, browser):
-        BasePage(browser).get_url(BASE_URL)
+        BasePageHelper(browser).get_url(BASE_URL)
         login_page = LoginPagesHelper(browser)
         login_page.text_login(LOGIN)
         for i in range(3):
